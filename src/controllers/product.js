@@ -1,9 +1,10 @@
-const productSchema = require("../models/productSchema");
+const productSchema = require("../models/productModel");
 
 const post = async (req, res) => {
   const data = new productSchema({
     name: req.body.name,
-    email: req.body.email,
+    cost:req.body.cost,
+    warrenty:req.body.warrenty
   });
   try {
     const data1 = await data.save();

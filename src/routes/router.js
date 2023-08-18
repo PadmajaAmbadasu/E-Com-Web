@@ -10,4 +10,6 @@ router.put("/:id", product.put);
 
 router.delete("/:id", product.deleteVal);
 
+
+
 module.exports = router;

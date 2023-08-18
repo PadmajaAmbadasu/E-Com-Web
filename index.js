@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const rout = require("./src/routes/router");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
+const productRoute = require("./src/routes/router");
+const userRoute = require("./src/routes/userRoute");
 
 const app = express();
 
@@ -11,7 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/create", rout);
+app.use("/create", productRoute);
+app.use("/user", userRoute);
 
 const PORT = 3000;
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/e-commerce";
@@ -20,6 +23,7 @@ mongoose
   .then(() => {
     console.log("DB connected!");
     app.listen(PORT, () => {
+
       console.log(`Server running in port : ${PORT}`);
     });
   })

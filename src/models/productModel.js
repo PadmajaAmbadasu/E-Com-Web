@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema({
   
 id: {
     type: String,
-    required: false,
+    required: true,
   },
   name: {
     type: String,
@@ -31,5 +31,8 @@ id: {
   },
 
 });
+const Product = mongoose.model("Product", productSchema);
 
-module.exports = mongoose.model("Products", productSchema);
+module.exports = Product;
+
+

@@ -5,7 +5,8 @@ const cors = require("cors");
 
 const productRoute = require("./src/routes/router");
 const userRoute = require("./src/routes/userRoute");
-const orderRoute = require("./src/routes/")
+const categeryRoute = require("./src/routes/categeryRoute")
+const orderRoute= require("./src/routes/orderRoute")
 
 const app = express();
 
@@ -16,7 +17,8 @@ app.use(cors());
 
 app.use("/create", productRoute);
 app.use("/user", userRoute);
-app.use("/order", orderRoute);
+app.use("/", categeryRoute);
+app.use("/add-to-cart", orderRoute)
 
 const PORT = 3000;
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/e-commerce";

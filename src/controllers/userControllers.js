@@ -33,7 +33,7 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Compare the provided password with the stored hash
+    // Compare the provided password with the stored+  hash
     const passwordMatch = await bcrypt.compareSync(password, user.password);
 
     if (!passwordMatch) {

@@ -20,6 +20,12 @@ id: {
     require: false,
   },
 
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    require: true,
+  },
+
   rating: {
     type: String,
     require: false,
@@ -31,6 +37,12 @@ id: {
   },
 
 });
+productSchema.pre('findOne', function (next) {
+  this.populate(category);
+  next();
+});
+
+
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;

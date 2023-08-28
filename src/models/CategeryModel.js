@@ -5,7 +5,6 @@ const categerySchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-
   cname: {
     type: String,
     require: true,
@@ -21,6 +20,6 @@ const categerySchema = new mongoose.Schema({
   },
 });
 
-const Category = mongoose.model("Categery", categerySchema);
+module.exports = mongoose.model("Category", categerySchema);
 
-module.exports = Category;
+

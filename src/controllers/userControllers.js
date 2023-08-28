@@ -1,5 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const config = require("./../config/dev.json");
 
 const register = async (req, res) => {
   try {
@@ -44,6 +46,12 @@ const login = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "An error occurred" });
   }
+const token = jwt.sign(
+  { email: user.email, uuid: user.uuid, role: user.role },
+  config.jwtSecretKey,
+  { expiresIn: 86400 }
+);
+const data = {accessToken: token, email: user.email, username: user.username, role: user.role};
+return data;
 };
-
 module.exports = { register, login };

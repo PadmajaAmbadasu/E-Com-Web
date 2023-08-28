@@ -1,5 +1,5 @@
 const Product = require("../models/productModel");
-const AddToCart = require("../models/addtoCartModel");
+const AddToCart = require("../models/CartModel");
 
 // Add a product to the cart
 const saveToCart = async (req, res) => {

@@ -3,10 +3,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const productRoute = require("./src/routes/router");
+const productRoute = require("./src/routes/productRoute");
 const userRoute = require("./src/routes/userRoute");
 const categeryRoute = require("./src/routes/categeryRoute")
 const orderRoute= require("./src/routes/orderRoute")
+
 
 const app = express();
 
@@ -17,8 +18,9 @@ app.use(cors());
 
 app.use("/create", productRoute);
 app.use("/user", userRoute);
-app.use("/", categeryRoute);
+app.use("/category", categeryRoute);
 app.use("/add-to-cart", orderRoute)
+
 
 const PORT = 3000;
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/e-commerce";

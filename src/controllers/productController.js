@@ -1,11 +1,27 @@
 const productSchema = require("../models/productModel");
+const categerySchema = require("../models/CategeryModel");
+
+const check = async (req, res) => {
+  const product = await Product.findById(req.params.id).populate("category");
+
+  if (!product) {
+    res.status(500).json({ success: false });
+  }
+  res.send(product);
+};
 
 const post = async (req, res) => {
+  const category = await categerySchema.findById(req.body.category);
+
+  if (!category) return res.status(400).send("Invalid Category");
+  console.log(category)
   const data = new productSchema({
     name: req.body.name,
-    cost:req.body.cost,
-    warrenty:req.body.warrenty
+    cost: req.body.cost,
+    warrenty: req.body.warrenty,
+    category: req.body.category,
   });
+
   try {
     const data1 = await data.save();
     res.json(data1);
@@ -39,9 +55,8 @@ const put = async (req, res) => {
     );
     res.json(updatedItem);
   } catch (err) {
-    console.log("adddadfa");
     console.log(err);
   }
 };
 
-module.exports = { post, get, deleteVal, put };
+module.exports = { post, get, deleteVal, put, check };

@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const categery= require('../controllers/categeryController')
+const category= require('../controllers/categeryController')
 
-router.post("/", categery.create)
+router.post("/", category.createCategery)
 
 
 module.exports = router;
